@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11142a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Giveaway Scout">
+  <meta name="description" content="A private, on-device giveaway discovery and entry checklist.">
+  <link rel="manifest" href="manifest.json">
+  <title>Giveaway Scout</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0d1021;--panel:#171b33;--panel2:#202646;--line:#30385f;--text:#f5f6ff;--muted:#aeb5d4;--accent:#a78bfa;--accent2:#67e8f9;--good:#86efac;--warn:#fcd34d;--radius:22px}
+    *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(110% 50% at 50% 0%,#26214d 0%,var(--bg) 62%);min-height:100svh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+    .wrap{width:min(100%,620px);margin:auto;padding:18px 16px 36px}.top{display:flex;align-items:center;gap:12px;margin:8px 0 18px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#8b5cf6,#22d3ee);display:grid;place-items:center;font-size:24px;box-shadow:0 8px 28px #8b5cf633}.brand{flex:1}.brand h1{font-size:22px;margin:0;font-weight:800;letter-spacing:-.5px}.brand p{margin:3px 0 0;font-size:12px;color:var(--muted)}.pill{font-size:11px;border:1px solid #3b456f;border-radius:999px;padding:7px 10px;color:#c4b5fd;background:#171b33}
+    .hero{padding:22px;border:1px solid #3c3c70;border-radius:26px;background:linear-gradient(135deg,#26204a,#171c38 72%);box-shadow:0 14px 35px #0003}.eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);font-weight:800}.hero h2{font-size:28px;line-height:1.08;letter-spacing:-.7px;margin:9px 0}.hero p{color:#c4c9e4;font-size:14px;line-height:1.5;margin:0 0 16px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:15px;padding:14px 13px;min-height:48px;font-size:14px;font-weight:750;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;touch-action:manipulation}.btn.primary{background:linear-gradient(120deg,#8b5cf6,#6366f1);border:0;color:white}.btn.cyan{background:#15384b;border-color:#256078;color:#baf6ff}.btn.small{padding:10px 12px;min-height:40px;font-size:12px;border-radius:12px}.btn:active{transform:scale(.985)}
+    .section{margin-top:22px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 11px}.section h3{font-size:17px;margin:0;letter-spacing:-.2px}.hint{font-size:11px;color:var(--muted)}.card{background:linear-gradient(180deg,#191e39,#15192f);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:11px}.field-label{font-size:12px;font-weight:700;color:#d7dbf2;display:block;margin-bottom:7px}.input{width:100%;border:1px solid #3a4267;border-radius:13px;background:#0e1329;color:var(--text);padding:13px;font-size:16px;outline:none}.input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #a78bfa22}.row{display:flex;gap:9px}.row .input{min-width:0;flex:1}.note{font-size:12px;line-height:1.45;color:var(--muted);margin:9px 1px 0}.quick{display:flex;flex-wrap:wrap;gap:8px}.quick a{font-size:12px;text-decoration:none;color:#d9d4ff;background:#252447;border:1px solid #46416e;border-radius:999px;padding:9px 12px}
+    .queue-empty{padding:24px 12px;text-align:center;color:var(--muted);font-size:13px;border:1px dashed #434b71;border-radius:17px}.entry{border:1px solid var(--line);background:#141a32;border-radius:18px;padding:14px;margin:10px 0}.entry.active{border-color:#9a83fb;box-shadow:0 0 0 1px #9a83fb33}.entry-title{font-size:14px;font-weight:800;line-height:1.35;overflow-wrap:anywhere}.entry-url{font-size:11px;color:#9ba6cb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:4px}.entry-controls{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.progress{height:6px;background:#2b3150;border-radius:99px;margin-top:13px;overflow:hidden}.progress>i{height:100%;display:block;background:linear-gradient(90deg,#a78bfa,#67e8f9);border-radius:99px;width:0}.tasks{display:grid;gap:8px;margin-top:12px}.task{display:flex;align-items:flex-start;gap:10px;padding:11px;border-radius:13px;background:#1d2340;border:1px solid #30385e;font-size:13px;line-height:1.35}.task input{width:20px;height:20px;accent-color:#a78bfa;margin:0;flex:0 0 auto}.task span{flex:1}.task.done span{color:#a8b2cb;text-decoration:line-through}.footnote{font-size:11px;color:#aeb5d4;line-height:1.5}.tabs{position:sticky;bottom:0;z-index:5;margin:18px -16px -36px;padding:10px 18px calc(10px + env(safe-area-inset-bottom));background:#0d1021ed;backdrop-filter:blur(18px);border-top:1px solid #2a3152;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{border:0;background:transparent;color:#aeb5d4;font-size:11px;font-weight:700;padding:8px 4px;border-radius:12px}.tab span{display:block;font-size:19px;margin-bottom:4px}.tab.active{background:#242144;color:#e6dcff}.view{display:none}.view.active{display:block}.toast{position:fixed;left:50%;bottom:calc(82px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#272d4e;border:1px solid #53618b;color:white;padding:11px 15px;border-radius:999px;font-size:12px;box-shadow:0 8px 25px #0006;display:none;z-index:9;max-width:90%;text-align:center}.smalltext{font-size:11px;color:var(--muted)}
+    @media(min-width:520px){.wrap{padding-top:28px}.hero{padding:26px}.hero h2{font-size:32px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><div class="logo">🎮</div><div class="brand"><h1>Giveaway Scout</h1><p>iPhone companion · saves on this device</p></div><span class="pill">MOBILE</span></header>
+
+  <main>
+    <section class="view active" id="discoverView">
+      <div class="hero"><div class="eyebrow">Find your next entry</div><h2>Gaming & tech giveaways.</h2><p>Search, collect links, and keep your entry steps organized. You stay in control of social actions and final submissions.</p><div class="actions"><a class="btn primary" href="https://gleam.io/giveaways?s=s" target="_blank" rel="noopener">↗ Browse Gleam</a><button class="btn cyan" id="searchGaming">⌕ Find gaming</button><button class="btn" id="searchTech">⌕ Find tech</button><button class="btn" id="browseMore">＋ Browse more</button></div></div>
+      <div class="section"><div class="section-head"><h3>Add a giveaway</h3><span class="hint">Paste its Gleam link</span></div><div class="card"><label class="field-label" for="giveawayUrl">Giveaway URL</label><div class="row"><input class="input" id="giveawayUrl" type="url" placeholder="https://gleam.io/..." autocapitalize="off" inputmode="url"><button class="btn primary" id="addGiveaway">Add</button></div><p class="note">On the Gleam page, use Safari’s Share button → Copy Link, return here, and paste it. The queue is saved on this iPhone.</p></div></div>
+      <div class="section"><div class="section-head"><h3>Quick searches</h3><span class="hint">Opens in Safari</span></div><div class="card"><div class="quick"><a href="https://www.google.com/search?q=site%3Agleam.io%2Fgiveaways+gaming+giveaway" target="_blank" rel="noopener">Gaming on Gleam</a><a href="https://www.google.com/search?q=site%3Agleam.io%2Fgiveaways+technology+giveaway" target="_blank" rel="noopener">Technology on Gleam</a><a href="https://www.google.com/search?q=site%3Agleam.io%2Fgiveaways+PC+gaming+hardware" target="_blank" rel="noopener">PC hardware</a><a href="https://www.google.com/search?q=site%3Agleam.io%2Fgiveaways+console+gaming" target="_blank" rel="noopener">Console gaming</a></div><p class="note">Search results are suggestions, not verified giveaways. Check the organizer, eligibility, closing date, and official rules before entering.</p></div></div>
+    </section>
+
+    <section class="view" id="queueView">
+      <div class="section-head"><h3>Your giveaway queue</h3><span class="hint" id="queueCount">0 saved</span></div><div class="card"><p class="note" style="margin-top:0">Open a giveaway, complete its steps yourself, then check them off here. When finished, use Next to move through your saved list.</p><div id="queueList"></div><button class="btn" id="clearQueue" style="width:100%;margin-top:8px">Clear saved queue</button></div>
+    </section>
+
+    <section class="view" id="guideView">
+      <div class="section-head"><h3>Using it on iPhone</h3></div>
+      <div class="card"><h3 style="margin:0 0 10px">Install to Home Screen</h3><ol style="padding-left:20px;color:#d8dcf1;font-size:13px;line-height:1.65;margin:0"><li>Open this app’s published HTTPS website in Safari.</li><li>Tap the Share icon (square with an up arrow).</li><li>Choose <b>Add to Home Screen</b>, then tap <b>Add</b>.</li><li>Launch Giveaway Scout from the new Home Screen icon.</li></ol><p class="note">The app files need to be hosted on an HTTPS website for the Home Screen installation and offline app shell to work. See the included README for a no-computer publishing route.</p></div>
+      <div class="card"><h3 style="margin:0 0 10px">How the giveaway loop works</h3><ol style="padding-left:20px;color:#d8dcf1;font-size:13px;line-height:1.65;margin:0"><li>Tap Browse Gleam or use a gaming/tech search.</li><li>Choose a giveaway and copy its link from Safari.</li><li>Return to Scout and paste the link into Add a giveaway.</li><li>Open it from Your queue. Complete required actions manually in the relevant app/site.</li><li>Return to Scout, tick off completed tasks, and tap Next.</li></ol></div>
+      <div class="card"><h3 style="margin:0 0 8px">Privacy & limits</h3><p class="footnote">Your saved links and checklist are stored in this browser on this device. The app does not ask for passwords, follow accounts, post comments, or submit entries. iOS keeps other apps and websites isolated, so it cannot automatically verify a follow or comment after you switch apps. Use only giveaways you are eligible for and follow each organizer’s official rules.</p></div>
+      <div class="card"><button class="btn" id="exportData" style="width:100%">Export my saved queue</button><p class="note">Creates a backup file of your saved URLs and checklist. Keep it private if it contains personal notes.</p></div>
+    </section>
+  </main>
+</div>
+<nav class="tabs" aria-label="Main navigation"><button class="tab active" data-view="discoverView"><span>⌕</span>Discover</button><button class="tab" data-view="queueView"><span>▤</span>My queue</button><button class="tab" data-view="guideView"><span>ⓘ</span>How to use</button></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{
+  'use strict';
+  const KEY='giveaway-scout-iphone-v1';
+  const TASKS=['Open giveaway and review official rules','View sponsor / required page','Follow on Instagram (if required)','Follow on TikTok (if required)','Watch video / visit channel (if required)','Leave a genuine comment (if required)','Complete any other eligible task','Verify the entry confirmation on Gleam'];
+  const $=id=>document.getElementById(id);
+  let items=[];
+  try{items=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(items))items=[];}catch{items=[];}
+  let currentTab='discoverView';let toastTimer;
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(items));}catch{notify('Could not save on this device. Check Safari storage settings.');}}
+  function notify(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.style.display='none',2600);}
+  function validGleam(raw){try{const u=new URL(raw.trim());return u.protocol==='https:'&&(u.hostname==='gleam.io'||u.hostname.endsWith('.gleam.io'))?u.href:null;}catch{return null;}}
+  function switchTab(id){currentTab=id;document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.view===id));if(id==='queueView')renderQueue();}
+  document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.view)));
+  function addItem(raw){const url=validGleam(raw);if(!url){notify('Paste a valid https://gleam.io giveaway link.');return;}if(items.some(x=>x.url===url)){notify('That giveaway is already in your queue.');return;}items.push({id:(Date.now()+Math.random()).toString(36),url,title:'Gleam giveaway',done:[],created:Date.now()});save();$('giveawayUrl').value='';renderQueue();notify('Giveaway saved to your queue.');}
+  $('addGiveaway').addEventListener('click',()=>addItem($('giveawayUrl').value));
+  $('giveawayUrl').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addItem(e.currentTarget.value);}});
+  $('searchGaming').addEventListener('click',()=>window.open('https://www.google.com/search?q=site%3Agleam.io%2Fgiveaways+gaming+giveaway','_blank','noopener'));
+  $('searchTech').addEventListener('click',()=>window.open('https://www.google.com/search?q=site%3Agleam.io%2Fgiveaways+technology+giveaway','_blank','noopener'));
+  $('browseMore').addEventListener('click',()=>window.open('https://gleam.io/giveaways?s=s','_blank','noopener'));
+  function renderQueue(){const root=$('queueList');$('queueCount').textContent=`${items.length} saved`;if(!items.length){root.innerHTML='<div class="queue-empty">No giveaways saved yet.<br>Find one in Discover, copy its Gleam URL, and add it here.</div>';return;}root.innerHTML='';items.forEach((item,index)=>{const done=Array.isArray(item.done)?item.done:[];const progress=Math.round(done.length/TASKS.length*100);const card=document.createElement('article');card.className='entry';card.innerHTML=`<div class="entry-title">${escapeHtml(item.title||'Gleam giveaway')}</div><div class="entry-url">${escapeHtml(item.url)}</div><div class="entry-controls"><button class="btn primary small" data-action="open">↗ Open giveaway</button><button class="btn small" data-action="next">Next →</button><button class="btn small" data-action="remove">Remove</button></div><div class="progress"><i style="width:${progress}%"></i></div><div class="smalltext" style="margin-top:6px">${done.length} of ${TASKS.length} steps checked</div><div class="tasks">${TASKS.map((task,i)=>`<label class="task ${done.includes(i)?'done':''}"><input type="checkbox" data-task="${i}" ${done.includes(i)?'checked':''}><span>${escapeHtml(task)}</span></label>`).join('')}</div>`;
+      card.querySelector('[data-action="open"]').addEventListener('click',()=>window.open(item.url,'_blank','noopener'));
+      card.querySelector('[data-action="next"]').addEventListener('click',()=>{const next=items[(index+1)%items.length];if(next){window.open(next.url,'_blank','noopener');notify('Opened the next saved giveaway.');}});
+      card.querySelector('[data-action="remove"]').addEventListener('click',()=>{items=items.filter(x=>x.id!==item.id);save();renderQueue();});
+      card.querySelectorAll('[data-task]').forEach(cb=>cb.addEventListener('change',()=>{const n=Number(cb.dataset.task);item.done=Array.isArray(item.done)?item.done:[];item.done=cb.checked?[...new Set([...item.done,n])]:item.done.filter(x=>x!==n);save();renderQueue();}));root.appendChild(card);});}
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  $('clearQueue').addEventListener('click',()=>{if(!items.length){notify('Your queue is already empty.');return;}if(confirm('Clear every saved giveaway and checklist?')){items=[];save();renderQueue();notify('Queue cleared.');}});
+  $('exportData').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'Giveaway Scout',version:1,exportedAt:new Date().toISOString(),items},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='giveaway-scout-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+  if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  renderQueue();
+})();
+</script>
+</body>
+</html>
